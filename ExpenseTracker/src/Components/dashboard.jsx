@@ -10,16 +10,17 @@ function Dashboard() {
 
     function removeitem(Id)
     {
-        const tempExpenses= expenses.filter((ep)=>{
-
-            if(ep.id!==Id) return ep;
-        })
+        const tempExpenses= expenses.filter((ep)=>( ep.id!==Id
+            )
+        )
     setExpenses(tempExpenses);
         
     }
 
 
     if (!isLoggedIn) return <Navigate to="/"/>
+
+    if(expenses.length === 0) return(<h2>No items added yet..</h2>)
     return (
         <>
         <h1>this is dashboard</h1>
@@ -28,6 +29,7 @@ function Dashboard() {
         {
             expenses.map((ep,index)=>(
                 <div key={ep.id}>
+                    <p>item {index+1}: </p>
                     <p>title: {ep.title}</p>
                     <p>price: {ep.amount}</p>
                     <p>category: {ep.category}</p>

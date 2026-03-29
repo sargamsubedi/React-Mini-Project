@@ -1,4 +1,4 @@
-import { useContext, useId, useState } from "react";
+import { useContext, useState } from "react";
 import { AuthContext, ExpenseContext } from "./Container";
 import { Navigate, useNavigate } from "react-router-dom";
 
@@ -10,7 +10,7 @@ function Addexpenses()
     const [amount,setAmount]=useState("");
     const [category,setCategory]=useState("");
     const navigate =useNavigate();
-    function expenseadd()
+    function addExpense()
     {
         if(title==="" || amount==="" || category==="")
         {
@@ -35,9 +35,9 @@ function Addexpenses()
         <h1>Add new expense</h1>
         <button onClick={()=>{navigate("/dashboard")}}>Goto Dashboard</button>
         <input type="text" placeholder="Title" value={title} onChange={(e)=>{setTitle(e.target.value)}} />
-        <input type="Number" placeholder="Amount"value={amount} onChange={(e)=>{setAmount(String(e.target.value))}}  />
+        <input type="number" placeholder="Amount"value={amount} onChange={(e)=>{setAmount(String(e.target.value))}}  />
         <input type="text" placeholder="Category" value={category} onChange={(e)=>{setCategory(e.target.value)}}  />
-        <button onClick={expenseadd}>Add</button>
+        <button onClick={addExpense}>Add</button>
         </>
 
     )

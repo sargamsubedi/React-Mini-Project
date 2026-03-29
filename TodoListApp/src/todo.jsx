@@ -17,9 +17,8 @@ function Todo()
 
     function removeTask(Id)
     {
-        let tempTaskArr = tasks.filter((task)=>{
-            if(Id!==task.id) return task;
-        })
+        let tempTaskArr = tasks.filter((task)=>(Id!==task.id)
+        )
         setTasks(tempTaskArr);
         
         
