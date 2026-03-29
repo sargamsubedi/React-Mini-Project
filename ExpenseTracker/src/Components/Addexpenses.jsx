@@ -1,13 +1,45 @@
-import { useContext } from "react";
-import { AuthContext } from "./Container";
-import { Navigate } from "react-router-dom";
+import { useContext, useId, useState } from "react";
+import { AuthContext, ExpenseContext } from "./Container";
+import { Navigate, useNavigate } from "react-router-dom";
 
 function Addexpenses()
 {
-    const [isLoggedIn] =useContext(AuthContext);
+    const {isLoggedIn} =useContext(AuthContext);
+    const {expenses,setExpenses}= useContext(ExpenseContext);
+    const [title,setTitle]=useState("");
+    const [amount,setAmount]=useState("");
+    const [category,setCategory]=useState("");
+    const navigate =useNavigate();
+    function expenseadd()
+    {
+        if(title==="" || amount==="" || category==="")
+        {
+            
+            alert("invalid form fillup");
+        }
+        else{
+            console.log("item added successfully");
+            setExpenses(prev=>[...prev,{"id":crypto.randomUUID(), "title": title, "amount": amount ,"category": category}]);
+
+            // if item added successfully reset input fields
+            setAmount("");
+            setTitle("");
+            setCategory("");
+            
+        }
+
+    }
     if(!isLoggedIn) return <Navigate to="/" />
     return(
+        <>
         <h1>Add new expense</h1>
+        <button onClick={()=>{navigate("/dashboard")}}>Goto Dashboard</button>
+        <input type="text" placeholder="Title" value={title} onChange={(e)=>{setTitle(e.target.value)}} />
+        <input type="Number" placeholder="Amount"value={amount} onChange={(e)=>{setAmount(String(e.target.value))}}  />
+        <input type="text" placeholder="Category" value={category} onChange={(e)=>{setCategory(e.target.value)}}  />
+        <button onClick={expenseadd}>Add</button>
+        </>
+
     )
 }
 export default Addexpenses;

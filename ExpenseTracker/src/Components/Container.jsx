@@ -1,4 +1,4 @@
-import { createContext, useState } from "react";
+import { createContext, useEffect, useState } from "react";
 import {BrowserRouter, Route, Routes} from "react-router-dom"
 import Login from "./login";
 import Dashboard from "./dashboard";
@@ -13,6 +13,10 @@ function Container()
     const [isLoggedIn,setIsLoggedIn]=useState(localStorage.getItem("auth")==="true");
     const [expenses,setExpenses] = useState(JSON.parse(localStorage.getItem("expenses"))||[]);
     console.log("container mounted");
+
+    useEffect(()=>{
+        localStorage.setItem("expenses",JSON.stringify(expenses));
+    },[expenses])
     
     return(
         <BrowserRouter>
