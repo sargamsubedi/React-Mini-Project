@@ -27,7 +27,9 @@ import useDebounce from "./CustomHooks/useDebounce";
 return(
     <>
         <input type="text" placeholder="Search here" value={input} onChange={(e)=>setInput(e.target.value)}/>
-        <button onClick={()=>setPage(prev=>prev+1)} disabled={loading || !moreDataAvailable} >Load More</button>
+        <button onClick={()=>setPage(prev=>prev+1)} 
+        disabled={loading || !moreDataAvailable} 
+            >Load More</button>
 
     {
         loading && page!==1 && <p>more data loading...</p>
