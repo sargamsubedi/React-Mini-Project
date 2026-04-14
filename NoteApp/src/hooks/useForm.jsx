@@ -1,11 +1,11 @@
-import { useState } from "react";
+import { useRef, useState } from "react";
 
 function useForm(fields)
 {
     const [formData, setFormData] = useState(fields);
     const [notes, setNotes]= useState([]);
     const [error,setError] = useState("");
-
+    const idRef = useRef(0);
 
     // console.log(formData);
     
@@ -14,7 +14,7 @@ function useForm(fields)
     {
         const {name , value} = e.target;
         setFormData(prev=>({...prev, [name]:value}));
-        console.log(formData.title);
+        // console.log(formData.title);
         
     }
 
@@ -26,7 +26,7 @@ function useForm(fields)
 
         for (const [key] of Object.entries(fields)) {
             console.log(key);
-            
+            if(key==='id') continue;
             const value = formData[key];
             console.log(value);
             if(!value.trim())
@@ -36,6 +36,8 @@ function useForm(fields)
             }
             
         }
+        formData.id=idRef.current; // if other things are valid add unique id to the note
+        idRef.current+= 1 
         setNotes(prev=> [...prev, formData]); // if everything is not valid add form data to notes
         
     }
