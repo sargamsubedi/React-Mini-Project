@@ -28,7 +28,7 @@ function Display() {
 
     // const [formData, setFormData] = useState(fields)
 
-    const { handleChange, handleSubmit,handleDelete, error, notes, formData } = useForm(fields);
+    const { handleChange, handleSubmit, handleDelete, error, notes, formData } = useForm(fields);
 
     // console.log(formData);
     console.log(notes);
@@ -59,15 +59,21 @@ function Display() {
             }
             <h2>notes you added: </h2>
             {
-                notes.map((val,index) => (
-                    inputFields.map((key, ind) => (
-                        <div key={ind}>
+                notes.map((val, index) => (
+                    <>
+                        {
 
-                            <p>{key}:{val[key]}</p>
-                            <button onClick={()=>handleDelete(index)}>Delete</button>
+                            inputFields.map((key, ind) => (
+                                <div key={ind}>
 
-                        </div>
-                    ))
+                                    <p>{key}:{val[key]}</p>
+
+                                </div>
+                            ))
+                        }
+                        <button onClick={() => handleDelete(index)}>Delete</button>
+
+                    </>
                 ))
             }
 
