@@ -42,7 +42,7 @@ function useForm(fields)
         
     }
 
-return {handleChange, handleSubmit, error, notes}
+return {handleChange, handleSubmit, error, notes, formData}
 }
 
 export default useForm;

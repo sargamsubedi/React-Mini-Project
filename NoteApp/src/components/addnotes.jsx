@@ -1,11 +1,11 @@
 
-function AddNotes({fields,formData,setFormData,onChange})
+function AddNotes({name,value,onChange})
 {
 
     return(
             <input type="text" 
-             name="title" 
-             value={formData[fields.title]} 
+             name={name} 
+             value={value} 
              onChange={onChange}
             />
 
