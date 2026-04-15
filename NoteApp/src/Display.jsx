@@ -15,7 +15,7 @@ function Display() {
         console.log("callback method called");
 
         for (const [key] of Object.entries(fields)) {
-            if(key==='id') continue;
+            if (key === 'id') continue;
             setInputFields(prev => [...prev, key])
         }
     }, [])
@@ -28,11 +28,11 @@ function Display() {
 
     // const [formData, setFormData] = useState(fields)
 
-    const { handleChange, handleSubmit, error, notes,formData} = useForm(fields);
+    const { handleChange, handleSubmit,handleDelete, error, notes, formData } = useForm(fields);
 
     // console.log(formData);
     console.log(notes);
-    
+
 
     return (
         <>
@@ -41,13 +41,14 @@ function Display() {
 
                 {
                     inputFields.map((inputField, index) => (
-                        <div  key={index}>
+                        <div key={index}>
                             <label >Enter {inputField} : </label>
-                        <AddNotes
-                            name={inputField}
-                            value={formData[inputField]}
-                            onChange={handleChange} />
-                            </div>
+                            <AddNotes
+                                name={inputField}
+                                value={formData[inputField]}
+                                onChange={handleChange}
+                            />
+                        </div>
                     ))
                 }
 
@@ -58,11 +59,13 @@ function Display() {
             }
             <h2>notes you added: </h2>
             {
-                 notes.map((val)=>(
-                    inputFields.map((key,ind)=>(
+                notes.map((val,index) => (
+                    inputFields.map((key, ind) => (
                         <div key={ind}>
-                        
-                        <p>{key}:{val[key]}</p>
+
+                            <p>{key}:{val[key]}</p>
+                            <button onClick={()=>handleDelete(index)}>Delete</button>
+
                         </div>
                     ))
                 ))

@@ -10,6 +10,12 @@ function useForm(fields)
     // console.log(formData);
     
 
+    function handleDelete(id)
+    {
+        const tempNotes = notes.filter((val,index)=>index!==id);
+        setNotes(tempNotes);
+    }
+
     function handleChange(e)
     {
         const {name , value} = e.target;
@@ -42,7 +48,7 @@ function useForm(fields)
         
     }
 
-return {handleChange, handleSubmit, error, notes, formData}
+return {handleChange, handleSubmit,handleDelete, error, notes, formData}
 }
 
 export default useForm;
