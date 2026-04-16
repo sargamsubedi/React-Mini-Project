@@ -23,7 +23,7 @@ function useForm(fields)
         console.log("handleEdit called");
         // add logic to navigate to editnotes 
 
-        <EditNote data={Data} inputFields={inputFields} />
+        <EditNote data={Data} inputFields={inputFields} editedDataPlacer={editedDataPlacer}/>
 
         
     }
@@ -38,7 +38,14 @@ function useForm(fields)
 
     function editedDataPlacer(data) // here data is a object with id,
     {
-        // will get form data with an id replace the notes[id] content data
+        // will get form data with an id , replace the notes[id] content with data
+
+        setNotes(prev=>(prev.map((val)=>(
+
+            val.id===data.id?data:val
+
+        ))))
+
     }
 
     function handleSubmit(e)
