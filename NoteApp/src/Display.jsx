@@ -1,6 +1,7 @@
 import { useCallback, useEffect, useState } from "react";
 import AddNotes from "./components/addnotes";
 import useForm from "./hooks/useForm";
+import useSearch from "./components/useSearch";
 
 function Display() {
     const [fields, setFields] = useState({
@@ -10,6 +11,7 @@ function Display() {
         tags: []
     })
     const [inputFields, setInputFields] = useState([]);
+    const [query,setQuery] = useState("");
 
     const getInputFields = useCallback(() => {
         console.log("callback method called");
@@ -28,10 +30,11 @@ function Display() {
 
     // const [formData, setFormData] = useState(fields)
 
-    const { handleChange, handleSubmit, handleDelete, error, notes, formData } = useForm(fields);
+    const { handleChange, handleSubmit, handleDelete,handleEdit, error, notes, formData } = useForm(fields);
+    const filteredData =useSearch(notes,query)
 
     // console.log(formData);
-    console.log(notes);
+    // console.log(notes);
 
 
     return (
@@ -57,10 +60,20 @@ function Display() {
             {
                 error && <p>{error}</p>
             }
+
+            <input  
+                type="text" 
+                value={query} 
+                placeholder="Search note here.." 
+                onChange={(e)=>{setQuery(e.target.value)}}
+            />
+
             <h2>notes you added: </h2>
             {
-                notes.map((val, index) => (
-                    <>
+
+                filteredData.length?
+                filteredData.map((val, index) => (
+                    <div key={index}>
                         {
 
                             inputFields.map((key, ind) => (
@@ -72,9 +85,10 @@ function Display() {
                             ))
                         }
                         <button onClick={() => handleDelete(index)}>Delete</button>
+                        <button onClick={() => handleEdit(index)}>Edit</button>
 
-                    </>
-                ))
+                    </div>
+                )) : <p>No notes found..</p>
             }
 
 

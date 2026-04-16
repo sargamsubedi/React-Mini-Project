@@ -16,6 +16,12 @@ function useForm(fields)
         setNotes(tempNotes);
     }
 
+    function handleEdit(id)
+    {
+        console.log("handleEdit called");
+        
+    }
+
     function handleChange(e)
     {
         const {name , value} = e.target;
@@ -48,7 +54,7 @@ function useForm(fields)
         
     }
 
-return {handleChange, handleSubmit,handleDelete, error, notes, formData}
+return {handleChange, handleSubmit,handleDelete,handleEdit, error, notes, formData}
 }
 
 export default useForm;
