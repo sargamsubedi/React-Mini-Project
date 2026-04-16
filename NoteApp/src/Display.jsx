@@ -71,6 +71,7 @@ function Display() {
             <h2>notes you added: </h2>
             {
 
+                // BUGGGG: FIX THIS here the index doesnt work, change it and make it id because this is the index of filteredData not notes so edit data,and deletedata will malfunction editing and deleting wrong data.. 
                 filteredData.length?
                 filteredData.map((val, index) => (
                     <div key={index}>
@@ -85,7 +86,7 @@ function Display() {
                             ))
                         }
                         <button onClick={() => handleDelete(index)}>Delete</button>
-                        <button onClick={() => handleEdit(index)}>Edit</button>
+                        <button onClick={() => handleEdit(index,inputFields)}>Edit</button>
 
                     </div>
                 )) : <p>No notes found..</p>

@@ -16,9 +16,13 @@ function useForm(fields)
         setNotes(tempNotes);
     }
 
-    function handleEdit(id)
+    function handleEdit(index,inputFields) // id is a index
     {
         console.log("handleEdit called");
+
+        <EditNote data={notes[index]} inputFields={inputFields} />
+        // add logic to navigate to editnotes with the notes[id] data.
+
         
     }
 
@@ -28,6 +32,11 @@ function useForm(fields)
         setFormData(prev=>({...prev, [name]:value}));
         // console.log(formData.title);
         
+    }
+
+    function editedDataPlacer(data) // here data is a object with id,
+    {
+        // will get form data with an id replace the notes[id] content data
     }
 
     function handleSubmit(e)
