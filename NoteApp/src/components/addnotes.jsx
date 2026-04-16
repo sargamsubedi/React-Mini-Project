@@ -7,6 +7,7 @@ function AddNotes({name,value,onChange})
              name={name} 
              value={value} 
              onChange={onChange}
+             disabled= {name==="id"}
             />
 
     )

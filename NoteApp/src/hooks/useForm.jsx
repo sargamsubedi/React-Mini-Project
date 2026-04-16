@@ -1,4 +1,5 @@
 import { useRef, useState } from "react";
+import EditNote from "../components/editnotes";
 
 function useForm(fields)
 {
@@ -12,16 +13,17 @@ function useForm(fields)
 
     function handleDelete(id)
     {
-        const tempNotes = notes.filter((val,index)=>index!==id);
+        const tempNotes = notes.filter((val)=>val.id!==id);
         setNotes(tempNotes);
     }
 
-    function handleEdit(index,inputFields) // id is a index
+    function handleEdit(id,inputFields) 
     {
+        const Data= notes.find((obj)=>obj.id===id)
         console.log("handleEdit called");
+        // add logic to navigate to editnotes 
 
-        <EditNote data={notes[index]} inputFields={inputFields} />
-        // add logic to navigate to editnotes with the notes[id] data.
+        <EditNote data={Data} inputFields={inputFields} />
 
         
     }

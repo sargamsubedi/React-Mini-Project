@@ -17,7 +17,7 @@ function Display() {
         console.log("callback method called");
 
         for (const [key] of Object.entries(fields)) {
-            if (key === 'id') continue;
+            // if (key === 'id') continue;
             setInputFields(prev => [...prev, key])
         }
     }, [])
@@ -74,7 +74,7 @@ function Display() {
                 // BUGGGG: FIX THIS here the index doesnt work, change it and make it id because this is the index of filteredData not notes so edit data,and deletedata will malfunction editing and deleting wrong data.. 
                 filteredData.length?
                 filteredData.map((val, index) => (
-                    <div key={index}>
+                    <div key={val.id}>
                         {
 
                             inputFields.map((key, ind) => (
@@ -85,8 +85,8 @@ function Display() {
                                 </div>
                             ))
                         }
-                        <button onClick={() => handleDelete(index)}>Delete</button>
-                        <button onClick={() => handleEdit(index,inputFields)}>Edit</button>
+                        <button onClick={() => handleDelete(val.id)}>Delete</button>
+                        <button onClick={() => handleEdit(val.id,inputFields)}>Edit</button>
 
                     </div>
                 )) : <p>No notes found..</p>
