@@ -1,10 +1,12 @@
-import { useRef, useState } from "react";
+import {useRef, useState } from "react";
 import EditNote from "../components/editnotes";
+import { useNoteContext } from "../noteContext";
+
 
 function useForm(fields)
 {
     const [formData, setFormData] = useState(fields);
-    const [notes, setNotes]= useState([]);
+    const {notes, setNotes} = useNoteContext();
     const [error,setError] = useState("");
     const idRef = useRef(0);
 

@@ -4,12 +4,12 @@ import useForm from "./hooks/useForm";
 import useSearch from "./components/useSearch";
 
 function Display() {
-    const [fields, setFields] = useState({
+    const fields = {
         id: '',
         title: "",
         content: "",
         tags: []
-    })
+    };
     const [inputFields, setInputFields] = useState([]);
     const [query,setQuery] = useState("");
 
@@ -30,8 +30,8 @@ function Display() {
 
     // const [formData, setFormData] = useState(fields)
 
-    const { handleChange, handleSubmit, handleDelete,handleEdit, error, notes, formData } = useForm(fields);
-    const filteredData =useSearch(notes,query)
+    const { handleChange, handleSubmit, handleDelete,handleEdit, error, formData } = useForm(fields);
+    const filteredData =useSearch(query)
 
     // console.log(formData);
     // console.log(notes);

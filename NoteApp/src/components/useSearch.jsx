@@ -1,8 +1,10 @@
 import { useEffect, useState } from "react";
+import { useNoteContext } from "../noteContext";
 
-function useSearch(data,query)
+function useSearch(query)
 {
     const [filteredData, setFilteredData]= useState([])
+    const {notes}=useNoteContext();
 
     useEffect(()=>{
 
@@ -12,7 +14,7 @@ function useSearch(data,query)
             console.log("filter data called");
             
             // for title
-            for (const element of data) {
+            for (const element of notes) {
                 console.log(element["title"]);
                 
                 if(element["title"].includes(query))
@@ -24,7 +26,7 @@ function useSearch(data,query)
                 
             }
             // for content
-            for (const element of data) {
+            for (const element of notes) {
 
                 if(element["content"].includes(query))
                 {
@@ -44,10 +46,10 @@ function useSearch(data,query)
             filterData();
         }
         else{
-            setFilteredData(data);
+            setFilteredData(notes);
         }
 
-    },[data,query])
+    },[notes,query])
 
 
     return filteredData;
