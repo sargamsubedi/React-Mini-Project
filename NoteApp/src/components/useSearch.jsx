@@ -5,7 +5,6 @@ function useSearch(query)
 {
     const [filteredData, setFilteredData]= useState([])
     const {notes}=useNoteContext();
-
     useEffect(()=>{
 
         function filterData()

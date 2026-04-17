@@ -40,6 +40,7 @@ function Display() {
     return (
         <>
             <h1>this is display section</h1>
+            
             <form onSubmit={handleSubmit}>
 
                 {
