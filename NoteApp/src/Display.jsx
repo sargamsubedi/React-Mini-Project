@@ -10,7 +10,7 @@ function Display() {
         content: "",
         tags: []
     };
-    const [inputFields, setInputFields] = useState([]);
+    const [inputFields, setInputFields] = useState([]); // array form of fields key
     const [query,setQuery] = useState("");
 
     const getInputFields = useCallback(() => {

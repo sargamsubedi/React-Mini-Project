@@ -38,18 +38,6 @@ function useForm(fields)
         
     }
 
-    function editedDataPlacer(data) // here data is a object with id,
-    {
-        // will get form data with an id , replace the notes[id] content with data
-
-        setNotes(prev=>(prev.map((val)=>(
-
-            val.id===data.id?data:val
-
-        ))))
-
-    }
-
     function handleSubmit(e)
     {
         e.preventDefault();
