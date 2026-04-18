@@ -2,35 +2,15 @@ import { useCallback, useEffect, useState } from "react";
 import AddNotes from "./components/addnotes";
 import useForm from "./hooks/useForm";
 import useSearch from "./components/useSearch";
+import { useNavigate } from "react-router-dom";
 
 function Display() {
-    const fields = {
-        id: '',
-        title: "",
-        content: "",
-        tags: []
-    };
-    const [inputFields, setInputFields] = useState([]); // array form of fields key
+
     const [query,setQuery] = useState("");
-
-    const getInputFields = useCallback(() => {
-        console.log("callback method called");
-
-        for (const [key] of Object.entries(fields)) {
-            // if (key === 'id') continue;
-            setInputFields(prev => [...prev, key])
-        }
-    }, [])
-
-    useEffect(() => {
-
-        getInputFields();
-    }, [])
-
-
+    const navigate = useNavigate();
     // const [formData, setFormData] = useState(fields)
 
-    const { handleChange, handleSubmit, handleDelete,handleEdit, error, formData } = useForm(fields);
+    const { handleChange, handleSubmit, handleDelete,handleEdit, error, formData,inputFields} = useForm();
     const filteredData =useSearch(query)
 
     // console.log(formData);
@@ -40,27 +20,7 @@ function Display() {
     return (
         <>
             <h1>this is display section</h1>
-            
-            <form onSubmit={handleSubmit}>
-
-                {
-                    inputFields.map((inputField, index) => (
-                        <div key={index}>
-                            <label >Enter {inputField} : </label>
-                            <AddNotes
-                                name={inputField}
-                                value={formData[inputField]}
-                                onChange={handleChange}
-                            />
-                        </div>
-                    ))
-                }
-
-                <button>Add</button>
-            </form>
-            {
-                error && <p>{error}</p>
-            }
+            <button onClick={()=>{navigate("/addnote")}}>Add New Note</button>
 
             <input  
                 type="text" 
@@ -87,7 +47,7 @@ function Display() {
                             ))
                         }
                         <button onClick={() => handleDelete(val.id)}>Delete</button>
-                        <button onClick={() => handleEdit(val.id,inputFields)}>Edit</button>
+                        <button onClick={() => navigate(`/edit/${val.id}`)}>Edit</button>
 
                     </div>
                 )) : <p>No notes found..</p>

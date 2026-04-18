@@ -1,12 +1,13 @@
 import { useEffect, useState } from "react"
 import { useNoteContext } from "../noteContext";
-import {useParams ,Link} from "react-router-dom";
+import {useParams ,Link, useNavigate} from "react-router-dom";
 
 
 function EditNote()
 {  
     console.log("editnote rendered");
     
+    const navigate= useNavigate();
     const inputFields =["id","title","content","tags"]; // temporary implementing here, figure out a way to pass this from display.jsx
     const {id}= useParams();
     const {notes,setNotes}= useNoteContext();
@@ -14,6 +15,8 @@ function EditNote()
     const [editedData, setEditedData] = useState(dataToEdit||{});
     // console.log(dataToEdit);
     // console.log(notes);
+    console.log(id);
+    
 
 useEffect(() => {
     if (notes.length > 0) {
@@ -35,7 +38,7 @@ useEffect(() => {
             val.id===data.id?data:val
 
         ))))
-
+        navigate("/");
     }
 
     // add form with values of index. and when submitted send the values to useform-> editedDataPlacer function
