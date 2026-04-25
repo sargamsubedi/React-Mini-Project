@@ -7,7 +7,7 @@ function AddNotes({ name, value, onChange }) {
     return (
         <input type="text"
             name={name}
-            value={value}
+            value= {name==="tags"?value.join(" "):value}
             onChange={onChange}
             disabled={name === "id"} // disable button so user can change the id of note
         />

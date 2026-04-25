@@ -47,7 +47,7 @@ function useForm()
 
         if(name==='tags')
         {
-            // setFormData(prev=>({...prev, [name]:value.split("")}))
+            setFormData(prev=>({...prev, [name]:value.split(" ")}))
             return;
         }
 
@@ -59,19 +59,32 @@ function useForm()
     function handleSubmit(e)
     {
         e.preventDefault();
+
         setError(""); // reset error when click addNote
         console.log("handle submit called");
+        // alert("handle submit called")
 
         console.log(formData);
-        console.error("idk whaat the fuck is happening");
         
         
 
         for (const [key] of Object.entries(fields)) {
             console.log(key);
-            if(key==='id' || key==='tags') continue;
+            if(key==='id') continue;
             const value = formData[key];
             console.log(value);
+
+            if(key==="tags")
+            {
+                if(!value.join(" ").trim())
+                {
+                    
+                setError(`${key} is required`);
+                return; // halt further work
+                }
+                continue;
+            }
+
             if(!value.trim())
             {
                 setError(`${key} is required`);

@@ -40,8 +40,10 @@ function Display() {
 
                             inputFields.map((key, ind) => (
                                 <div key={ind}>
-
+                                    {
+                                        key==="tags"?<p>{key}:{val[key].join(" ")}</p>:
                                     <p>{key}:{val[key]}</p>
+                                    }
 
                                 </div>
                             ))
