@@ -14,7 +14,7 @@ function Display() {
     const filteredData =useSearch(query)
 
     // console.log(formData);
-    // console.log(notes);
+    // console.log(filteredData);
 
 
     return (

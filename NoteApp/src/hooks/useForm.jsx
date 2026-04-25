@@ -39,22 +39,20 @@ function useForm()
         setNotes(tempNotes);
     }
 
-    function handleEdit(id,inputFields) 
-    {
-        const Data= notes.find((obj)=>obj.id===id)
-        console.log("handleEdit called");
-        // add logic to navigate to editnotes 
-        
-        <EditNote data={Data} inputFields={inputFields} editedDataPlacer={editedDataPlacer}/>
 
-        
-    }
 
     function handleChange(e)
     {
         const {name , value} = e.target;
+
+        if(name==='tags')
+        {
+            // setFormData(prev=>({...prev, [name]:value.split("")}))
+            return;
+        }
+
         setFormData(prev=>({...prev, [name]:value}));
-        // console.log(formData.title);
+        // console.log(formData);
         
     }
 
@@ -64,9 +62,14 @@ function useForm()
         setError(""); // reset error when click addNote
         console.log("handle submit called");
 
+        console.log(formData);
+        console.error("idk whaat the fuck is happening");
+        
+        
+
         for (const [key] of Object.entries(fields)) {
             console.log(key);
-            if(key==='id') continue;
+            if(key==='id' || key==='tags') continue;
             const value = formData[key];
             console.log(value);
             if(!value.trim())
@@ -83,7 +86,7 @@ function useForm()
         
     }
 
-return {handleChange, handleSubmit,handleDelete,handleEdit, error, notes, formData,inputFields}
+return {handleChange, handleSubmit,handleDelete, error, notes, formData,inputFields}
 }
 
 export default useForm;
