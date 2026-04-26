@@ -1,10 +1,9 @@
 import { useEffect, useState } from "react";
-import { useNoteContext } from "../noteContext";
 
-function useSearch(query)
+function useSearch(notes,query)
 {
     const [filteredData, setFilteredData]= useState([])
-    const {notes}=useNoteContext();
+
     useEffect(()=>{
 
         function filterData()
