@@ -34,6 +34,16 @@ const useHabitStore = create(persist(
                         habits: changedHabits
                     }
             })
+        },
+        deleteHabit : (id)=>{
+            set((state)=>{
+
+                const changedHabits= state.habits.filter((habit)=>habit.id!==id);
+
+                return{
+                    habits: changedHabits
+                }
+            })
         }
     }),
     {
