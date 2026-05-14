@@ -1,5 +1,7 @@
+import { useEffect, useState } from "react";
 import useHabitStore from "./store/useHabitStore";
 import { calculateStreak } from "./utils/calculateStreak";
+import { getTodayDate } from "./utils/getTodayDate";
 
 function Display()
 {
@@ -7,7 +9,16 @@ const habits = useHabitStore((state)=>state.habits)
 const toggleCompletion = useHabitStore((state)=>state.toggleCompletion)
 const deleteHabit = useHabitStore((state)=>state.deleteHabit)
 const updateHistory = useHabitStore((state)=>state.updateHistory)
+const addDateToHistory = useHabitStore((state)=>state.addDateToHistory)
 
+
+const [today,setToday] = useState(getTodayDate());
+
+
+// when date changes call addDateToHistory
+useEffect(()=>{
+    addDateToHistory();
+},[today])
 
 if(habits.length===0) return <p>No habits added.</p>
 

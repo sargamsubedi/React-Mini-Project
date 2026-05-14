@@ -49,7 +49,7 @@ const useHabitStore = create(persist(
                 }
             })
         },
-        //When a habit's completion is toggled , this function sets/unsets the history[date] completion to true/false
+        //When a habit's completion is toggled , this function sets/unsets the history[today] completion to true/false
         updateHistory: (id)=>{
             set((state)=>{
                 const today = getTodayDate();
