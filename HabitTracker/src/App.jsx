@@ -1,7 +1,7 @@
 import AddHabit from "./components/AddHabit"
 import Display from "./display"
 import   './App.css'
-import { getTodayDate } from "./utility/getTodayDate";
+import { getTodayDate } from "./utils/getTodayDate";
 
 
 function App() {
