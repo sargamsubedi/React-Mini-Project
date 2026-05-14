@@ -12,33 +12,14 @@ const useHabitStore = create(persist(
 
             set((state) => ({
                 habits: [...state.habits, {
-                    id: id, name: habit, streak: 0, completedToday: false, history: {
+                    id: id, name: habit, streak: 0, history: {
                        [today]: false
                     }
                 }]
             }
             ))
         },
-        toggleCompletion: (id) => {
 
-            set((state) => {
-                const changedHabits = state.habits.map((habit) => {
-                    if (habit.id === id) {
-                        return {
-                            ...habit, completedToday: !habit.completedToday
-
-                        }
-                    }
-                    else {
-                        return habit;
-                    }
-                })
-
-                return {
-                    habits: changedHabits
-                }
-            })
-        },
         deleteHabit: (id) => {
             set((state) => {
 

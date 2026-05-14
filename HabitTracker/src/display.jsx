@@ -6,7 +6,6 @@ import { getTodayDate } from "./utils/getTodayDate";
 function Display()
 {
 const habits = useHabitStore((state)=>state.habits)
-const toggleCompletion = useHabitStore((state)=>state.toggleCompletion)
 const deleteHabit = useHabitStore((state)=>state.deleteHabit)
 const updateHistory = useHabitStore((state)=>state.updateHistory)
 const addDateToHistory = useHabitStore((state)=>state.addDateToHistory)
@@ -30,12 +29,11 @@ return(
             <div key={habit.id} 
                 className="habit" 
                 onClick={()=>{
-                    toggleCompletion(habit.id)
                     updateHistory(habit.id)}}
                 >
                 <p>name: {habit.name}</p>
                 <p>streak: {calculateStreak(habit.history)}</p>
-                <p>CompleteToday: {`${habit.completedToday}`}</p>
+                <p>CompleteToday: {`${habit.history[today]}`}</p>
                 <button 
                     onClick={(e)=>{
                         e.stopPropagation();
