@@ -11,8 +11,10 @@ const updateHistory = useHabitStore((state)=>state.updateHistory)
 const addDateToHistory = useHabitStore((state)=>state.addDateToHistory)
 
 
-const [today,setToday] = useState(getTodayDate());
+// const [today,setToday] = useState(getTodayDate());
+const today = getTodayDate();
 
+console.log(today);
 
 // when date changes call addDateToHistory
 useEffect(()=>{
