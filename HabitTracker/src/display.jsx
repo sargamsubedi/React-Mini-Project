@@ -4,9 +4,8 @@ import { getTodayDate } from "./utils/getTodayDate";
 import HabitCard from "./components/HabitCard";
 import { getFilteredData } from "./utils/getFilteredHabit";
 
-function Display()
+function Display({filterMode})
 {
-const [filterMode,setFilterMode]= useState('All');
 const habits = useHabitStore((state)=>state.habits)
 const addDateToHistory = useHabitStore((state)=>state.addDateToHistory)
 
