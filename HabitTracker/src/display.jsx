@@ -22,6 +22,8 @@ console.log(habits);
 
 // when date changes call addDateToHistory
 useEffect(()=>{
+    console.log("addDateToHistory called");
+    
     addDateToHistory();
 },[today])
 

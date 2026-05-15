@@ -54,8 +54,8 @@ const useHabitStore = create(persist(
             set((state)=>{
                 const today = getTodayDate();
                 const updatedHabit =state.habits.map((habit)=>{
-
-                    const changedHistory = {...habit.history,[today]:false}
+                    // when date isnt added set to false when date is added and user refresh triggres it set its value to history[today]
+                    const changedHistory = {...habit.history,[today]:habit.history[today]??false}
                     
                     return {...habit,history:changedHistory};
                     }
