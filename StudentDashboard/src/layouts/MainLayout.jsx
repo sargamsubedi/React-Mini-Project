@@ -1,9 +1,5 @@
 import Navbar from "../components/Navbar"
-import {Routes, Route} from 'react-router-dom'
-import Home from "../pages/Home"
-import Subjects from "../pages/Subjects"
-import NotFound from "../pages/NotFound"
-import SubjectDetails from "../pages/SubjectDetails"
+import { Outlet} from 'react-router-dom'
 
 function MainLayout()
 {
@@ -14,18 +10,7 @@ function MainLayout()
         {/* insert routers here */}
 
 
-        <Routes>
-
-            <Route path="/" element={<Home />} />
-            
-            <Route path="/subjects" element={<Subjects />} />
-
-            <Route path="/subjects/:id" element={<SubjectDetails />} />
-
-            <Route path="*" element={<NotFound />} />
-            
-
-        </Routes>
+        <Outlet />
         </>
 
         
