@@ -15,12 +15,13 @@ function MainLayout()
 
 
         <Routes>
+
             <Route path="/" element={<Home />} />
-            <Route path="/subjects" element={<Subjects />} >
+            
+            <Route path="/subjects" element={<Subjects />} />
 
-                <Route path=":id" element={<SubjectDetails />} />
+            <Route path="/subjects/:id" element={<SubjectDetails />} />
 
-            </Route>
             <Route path="*" element={<NotFound />} />
             
 

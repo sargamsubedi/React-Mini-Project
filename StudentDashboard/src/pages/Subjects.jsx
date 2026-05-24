@@ -1,13 +1,22 @@
 import { Outlet } from "react-router-dom";
+import { useSubjects } from "../data/subject";
+import SubjectCard from "../components/SubjectCard";
 
 function Subjects()
 {
+    const subjects = useSubjects(state=>state.subjects);
     return(
-        <>
-        <h1>this is Subjects</h1>
+        <div className="subject-container">
 
-        <Outlet />
-        </>
+        {
+            subjects.map(sub=>(
+                <div key={sub.id} className="subject">
+                    <SubjectCard  subject={sub}/>
+                </div>
+            ))
+        }
+
+        </div>
     )
 }
 export default Subjects;

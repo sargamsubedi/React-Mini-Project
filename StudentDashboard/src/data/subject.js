@@ -3,7 +3,7 @@ import { create } from 'zustand'
 
 export const useSubjects = create((set) => (
   {
-    subjects =[
+    subjects :[
       {
         id: 1,
         name: "DAA",
