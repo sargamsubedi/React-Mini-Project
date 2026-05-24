@@ -5,6 +5,7 @@ import {BrowserRouter,Route,Routes} from 'react-router-dom'
 import Subjects from './pages/Subjects'
 import SubjectDetails from './pages/SubjectDetails'
 import NotFound from './pages/NotFound'
+import Home from './pages/Home'
 function App() {
 
   return (
@@ -15,7 +16,8 @@ function App() {
 
             <Route path="/" element={<MainLayout />} > 
             
-            
+              <Route path='/' element= {<Home />} />
+
               <Route path="subjects" element={<Subjects />} />
 
               <Route path="subjects/:id" element={<SubjectDetails />} />
