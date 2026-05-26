@@ -6,7 +6,8 @@ function Navbar()
         <nav>
             
             <Link to={"/"}>Home</Link>
-            <Link to={"subjects"}>Subjects</Link>
+            <Link to={"dashboard"}>Dashboard</Link>
+            <Link to={"profile"}>Profile</Link>
 
         </nav>
     )

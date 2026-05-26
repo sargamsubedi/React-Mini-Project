@@ -6,6 +6,8 @@ import Subjects from './pages/Subjects'
 import SubjectDetails from './pages/SubjectDetails'
 import NotFound from './pages/NotFound'
 import Home from './pages/Home'
+import Profile from './pages/Profile'
+import DashboardLayout from './layouts/DashboardLayout'
 function App() {
 
   return (
@@ -18,9 +20,14 @@ function App() {
             
               <Route path='/' element= {<Home />} />
 
-              <Route path="subjects" element={<Subjects />} />
+              <Route path="profile" element={<Profile />} />
 
-              <Route path="subjects/:id" element={<SubjectDetails />} />
+              <Route path="dashboard" element={<DashboardLayout />} >
+
+                <Route path='subjects' element={<Subjects />}/>
+
+                <Route path="subjects/:id" element={<SubjectDetails />} />
+              </Route>
             </Route>
 
             <Route path="*" element={<NotFound />} />

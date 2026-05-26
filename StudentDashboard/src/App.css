@@ -13,3 +13,17 @@ nav{
     justify-content: start;
     gap: 20px;
 }
+
+.sidebar{
+    display: flex;
+    flex-direction: column;
+    border: 1px dashed purple;
+}
+.dashboard{
+    display: flex;
+}
+
+a{
+    color: forestgreen;
+    padding: 10px;
+}
