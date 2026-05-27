@@ -3,7 +3,7 @@ import { create } from 'zustand'
 export const useAuth = create((set) => ({
 
     isLoggedIn: false,
-    logIn: () => {
+    logIn: (location) => {
         set((state) => (
             { isLoggedIn: true }
         ))
