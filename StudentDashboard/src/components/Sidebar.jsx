@@ -1,14 +1,30 @@
-import { Link } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 
-function Sidebar()
-{
+function Sidebar() {
 
-    return(
+    return (
         <div className="sidebar">
             <p>just to imitate sidebar</p>
-            <Link to={"subjects"}>Subjects</Link>
-            <Link to={"assignment"}>Assignment</Link>
-            <Link to={"exam"}>Exam</Link>
+            <NavLink
+                to={"subjects"}
+                className={({ isActive }) => (
+                    isActive ? "active" : ""
+                )}
+            >Subjects</NavLink>
+
+            <NavLink
+                to={"assignment"}
+                className={({ isActive }) => (
+                    isActive ? "active" : ""
+                )}
+            >Assignment</NavLink>
+
+            <NavLink
+                to={"exam"}
+                className={({ isActive }) => (
+                    isActive ? "active" : ""
+                )}
+            >Exam</NavLink>
         </div>
     )
 }
