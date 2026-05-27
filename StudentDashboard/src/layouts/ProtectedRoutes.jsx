@@ -4,9 +4,10 @@ import { useAuth } from "../store/useAuth"
 function ProtectedRoutes(){
 
     const isLoggedIn = useAuth(state=>state.isLoggedIn);
+    const location = useLocation();
 
     if(!isLoggedIn) {
-        const location = useLocation();
+        
         return <Navigate to={"login"} state={{from: location}}/>}
     else return <Outlet />
     

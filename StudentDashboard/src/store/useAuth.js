@@ -1,6 +1,9 @@
 import { create } from 'zustand'
+import { persist } from 'zustand/middleware'
 
-export const useAuth = create((set) => ({
+export const useAuth = create(persist(
+   
+(set) => ({
 
     isLoggedIn: false,
     logIn: (location) => {
@@ -15,5 +18,9 @@ export const useAuth = create((set) => ({
     }
 
 }
-)
-)
+),
+{
+    name: "auth-storage"
+}
+
+))
