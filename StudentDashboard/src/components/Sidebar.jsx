@@ -7,8 +7,8 @@ function Sidebar()
         <div className="sidebar">
             <p>just to imitate sidebar</p>
             <Link to={"subjects"}>Subjects</Link>
-            <Link>Assignment</Link>
-            <Link>Exam</Link>
+            <Link to={"assignment"}>Assignment</Link>
+            <Link to={"exam"}>Exam</Link>
         </div>
     )
 }

@@ -21,9 +21,11 @@ nav{
 }
 .dashboard{
     display: flex;
+    gap: 20px;
 }
 
 a{
     color: forestgreen;
     padding: 10px;
+    
 }

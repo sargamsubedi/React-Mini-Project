@@ -8,6 +8,8 @@ import NotFound from './pages/NotFound'
 import Home from './pages/Home'
 import Profile from './pages/Profile'
 import DashboardLayout from './layouts/DashboardLayout'
+import Assignment from './pages/Assignment'
+import Exam from './pages/Exam'
 function App() {
 
   return (
@@ -27,6 +29,11 @@ function App() {
                 <Route path='subjects' element={<Subjects />}/>
 
                 <Route path="subjects/:id" element={<SubjectDetails />} />
+
+                <Route path='assignment' element={<Assignment />}/>
+
+                <Route path='exam' element={<Exam />}/>
+                
               </Route>
             </Route>
 
