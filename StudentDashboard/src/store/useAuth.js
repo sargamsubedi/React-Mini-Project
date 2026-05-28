@@ -6,14 +6,20 @@ export const useAuth = create(persist(
 (set) => ({
 
     isLoggedIn: false,
-    logIn: (location) => {
+    role:"",
+    logIn: (role) => {
         set((state) => (
-            { isLoggedIn: true }
+            { isLoggedIn: true,
+            role: role
+             }
         ))
     },
     logOut: () => {
         set((state) => (
-            { isLoggedIn: false }
+            { isLoggedIn: false,
+                role:"" // reset role
+
+             }
         ))
     }
 

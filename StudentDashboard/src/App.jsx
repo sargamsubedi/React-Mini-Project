@@ -12,6 +12,9 @@ import Assignment from './pages/Assignment'
 import Exam from './pages/Exam'
 import Login from './pages/Login'
 import ProtectedRoutes from './layouts/ProtectedRoutes'
+import RoleProtectedRoute from './layouts/RoleProtectedRoute'
+import AddNewSubject from './pages/AddNewSubject'
+import Unauthorized from './pages/Unauthorized'
 function App() {
 
   return (
@@ -22,13 +25,17 @@ function App() {
 
         <Route element={<MainLayout />} >
 
+          {/* access to anyone loggedin and non-loggedin users */}
           <Route path='/' element={<Home />} />
 
           <Route path='login' element={<Login />} />
 
-          <Route element ={<ProtectedRoutes/>}>
+          {/* access to logged in users only with any role */}
+          <Route element={<ProtectedRoutes />}>
 
             <Route path="profile" element={<Profile />} />
+
+            <Route path="unauthorized" element={<Unauthorized />} />
 
             <Route path="dashboard" element={<DashboardLayout />} >
 
@@ -40,6 +47,14 @@ function App() {
 
               <Route path='exam' element={<Exam />} />
 
+
+            </Route>
+
+              {/* for admin access only */}
+
+            <Route element={<RoleProtectedRoute />}>
+
+              <Route path='addnewsubject' element={<AddNewSubject />} />
             </Route>
           </Route>
         </Route>

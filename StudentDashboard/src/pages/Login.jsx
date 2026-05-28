@@ -7,19 +7,24 @@ function Login()
     const location = useLocation();
     const logIn = useAuth(state=>state.logIn)
     const navigate = useNavigate();
-    function handleLogIn()
+    function handleLogIn(role)
     {
         // if from is null navigate to home
     const from = location.state?.from?.pathname  || "/"
 
-        logIn();
+        logIn(role);
         navigate(from ,{replace:true}) // replace :true if for Replace the current entry in the history stack instead of pushing a new one (so when user back it doesnt goto login page again )
     }
     return(
-        <>
-        <p>right now only login button update it to login form</p>
-        <button onClick={handleLogIn}>logIn</button>
-        </>
+        <div className="login-form">
+            <p>just dummy text field for now </p>
+            <label>Username</label>
+        <input type="text"  />
+            <label>Password</label>
+        <input type="password"  />
+        <button onClick={()=>handleLogIn("student")}>logIn as Student</button>
+        <button onClick={()=> handleLogIn("admin")}>logIn as Admin</button>
+        </div>
     )
 }
 

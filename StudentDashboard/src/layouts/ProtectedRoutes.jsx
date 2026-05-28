@@ -8,7 +8,9 @@ function ProtectedRoutes(){
 
     if(!isLoggedIn) {
         
-        return <Navigate to={"login"} state={{from: location}}/>}
+        return <Navigate to={"login"} state={{from: location}}/>
+    }
+    
     else return <Outlet />
     
 }
